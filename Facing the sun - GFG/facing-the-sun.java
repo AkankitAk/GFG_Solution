@@ -35,14 +35,28 @@ public class Main {
 
 class Solution {
     int countBuildings(int h[], int n) {
-       Stack<Integer> st=new Stack<>();
-       for(int i=0;i<n;i++){
-           if(st.isEmpty()) st.push(h[i]);
-           else{
-               if(h[i]>st.peek()) st.push(h[i]);
-           }
-       }
-       
-       return st.size();
+      Stack<Integer> st = new Stack();
+      int count =0;
+      for(int i=0;i<n;i++){
+          
+          if(st.size()==0){
+              count++;
+              st.push(h[i]);
+          }else {
+              
+              while(st.size()>0 && st.peek()<h[i])st.pop();
+              if(st.size()==0){
+                  count++;
+                  st.push(h[i]);
+              }else {
+                  st.push(h[i]);
+              }
+              
+          }
+          
+          
+          
+      }
+      return count;
     }
 }
