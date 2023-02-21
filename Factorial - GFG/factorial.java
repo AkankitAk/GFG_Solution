@@ -21,8 +21,7 @@ class GFG
 
 class Solution{
     static long factorial(int N){
-        if(N==0) return 1;
-        if(N==1) return 1;
+        if(N==1 || N==0) return 1;
         long smallFact=factorial(N-1);
         long ans=smallFact*N;
         return ans;
